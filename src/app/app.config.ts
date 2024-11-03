@@ -4,6 +4,6 @@ import {ApplicationConfig} from "@angular/core";
 
 export const appConfig:ApplicationConfig = {
   providers:[
-    provideRouter(routes,withComponentInputBinding())
+    provideRouter(routes)
   ]
 }
