@@ -12,6 +12,7 @@ export const routes: Routes = [
     path: 'users/:userId', // adam mitone chanta dynamic route dashte bashe <domain>/users/:userId/:task
     component: UserTasksComponent,
     children:[
+      {path:'', redirectTo:'tasks',pathMatch:'full'},
       {path:'tasks',component:TasksComponent},
       {path:'tasks/new',component:NewTaskComponent}
     ]
