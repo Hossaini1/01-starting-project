@@ -35,11 +35,15 @@ export class UserTasksComponent implements OnInit {
 
   // in old version this way für extracting parameter userId
   userName = '';
+  message=input.required<string>();
   private userService = inject(UsersService);
   private activatedRoute = inject(ActivatedRoute);
   private destroyRef = inject(DestroyRef);
-
+  
+  
   ngOnInit(): void {
+  console.log('Hier ist static Data '+ this.message);
+  
     // this.activatedRoute.snapshot.paramMap.get('userId')
     const subscription = this.activatedRoute.paramMap.subscribe({
       next: (_paramMap) => {
@@ -48,6 +52,9 @@ export class UserTasksComponent implements OnInit {
     })
     this.destroyRef.onDestroy(() => subscription.unsubscribe());
   }
+
+  
+  
 
 
 }
