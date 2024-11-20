@@ -5,11 +5,11 @@ import { ActivatedRoute, ActivatedRouteSnapshot, ResolveFn, RouterLink, RouterOu
 @Component({
   selector: 'app-user-tasks',
   standalone: true,
-  imports:[RouterOutlet,RouterLink],
+  imports: [RouterOutlet, RouterLink],
   templateUrl: './user-tasks.component.html',
   styleUrl: './user-tasks.component.css',
 })
-export class UserTasksComponent  {
+export class UserTasksComponent {
 
   // userId=input.required<string>();
 
@@ -35,34 +35,43 @@ export class UserTasksComponent  {
 
   // in old version this way für extracting parameter userId
   userName = input.required<string>();
-  message=input.required<string>();
+  message = input.required<string>();
   // private userService = inject(UsersService);
   // private activatedRoute = inject(ActivatedRoute);
   // private destroyRef = inject(DestroyRef);
-  
-  
-/*   ngOnInit(): void {
-  console.log('Hier ist static Data '+ this.message);
-  
-    // this.activatedRoute.snapshot.paramMap.get('userId')
-    const subscription = this.activatedRoute.paramMap.subscribe({
-      next: (_paramMap) => {
-        this.userName = this.userService.users.find((user) => user.id === _paramMap.get('userId'))?.name || '';
-      }
-    })
-    this.destroyRef.onDestroy(() => subscription.unsubscribe());
-  } */
 
 
+  /*   ngOnInit(): void {
+    console.log('Hier ist static Data '+ this.message);
+    
+      // this.activatedRoute.snapshot.paramMap.get('userId')
+      const subscription = this.activatedRoute.paramMap.subscribe({
+        next: (_paramMap) => {
+          this.userName = this.userService.users.find((user) => user.id === _paramMap.get('userId'))?.name || '';
+        }
+      })
+      this.destroyRef.onDestroy(() => subscription.unsubscribe());
+    } */
+
+
+  // reveshi digar baraye estefade az data haye static va dynamic dar route
+  // private activatedRoute = inject(ActivatedRoute)
+  // ngOnInit(): void {
+  //   this.activatedRoute.data.subscribe({
+  //     next: (data) => {
+  //       console.log(data);
+  //     }
+  //   })
+  // }
 
 }
 
-export const resolveUserName:ResolveFn<string> =(activatedRoute:ActivatedRouteSnapshot,
-  routerState:RouterStateSnapshot
-)=>{
-  
-  const userService =inject(UsersService);
+export const resolveUserName: ResolveFn<string> = (activatedRoute: ActivatedRouteSnapshot,
+  routerState: RouterStateSnapshot
+) => {
+
+  const userService = inject(UsersService);
   const userName = userService.users.find((user) => user.id === activatedRoute.paramMap
-  .get('userId'))?.name || '';
+    .get('userId'))?.name || '';
   return userName
 }
