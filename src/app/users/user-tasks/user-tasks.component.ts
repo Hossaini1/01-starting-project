@@ -66,12 +66,23 @@ export class UserTasksComponent {
 
 }
 
-export const resolveUserName: ResolveFn<string> = (activatedRoute: ActivatedRouteSnapshot,
+export const resolveUserName: ResolveFn<string> = (activatedRouteSnapshot: ActivatedRouteSnapshot,
   routerState: RouterStateSnapshot
 ) => {
 
   const userService = inject(UsersService);
-  const userName = userService.users.find((user) => user.id === activatedRoute.paramMap
+  const userName = userService.users.find((user) => user.id === activatedRouteSnapshot.paramMap
     .get('userId'))?.name || '';
   return userName
 }
+
+
+export const resoveTitle:ResolveFn<string> =(activatedRouteSnapshot,routerState)=>{
+  return resolveUserName(activatedRouteSnapshot, routerState) + '\'s Tasks';
+
+  // alternative man kannn so bekommen dynamic Title
+  // const userService = inject(UsersService);
+  // const userName = userService.users.find((user) => user.id === activatedRouteSnapshot.paramMap
+  //   .get('userId'))?.name || '';
+  // return userName
+} 

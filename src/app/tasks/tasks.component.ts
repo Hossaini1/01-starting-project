@@ -42,7 +42,7 @@ export class TasksComponent  {
   // }
 }
 
-export const resolveUserTasks:ResolveFn<Task[]>=(activatedRouteSnapshot,state)=>{
+export const resolveUserTasks:ResolveFn<Task[]>=(activatedRouteSnapshot,routerState)=>{
   const order =activatedRouteSnapshot.queryParams['order'];
   const tasksService = inject(TasksService);
   const tasks = tasksService.allTasks().filter((task)=>task.userId===activatedRouteSnapshot.paramMap.get('userId'))
