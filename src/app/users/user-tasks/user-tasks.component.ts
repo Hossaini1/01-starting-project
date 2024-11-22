@@ -78,7 +78,11 @@ export const resolveUserName: ResolveFn<string> = (activatedRouteSnapshot: Activ
 
 
 export const resoveTitle:ResolveFn<string> =(activatedRouteSnapshot,routerState)=>{
+  console.log(resolveUserName(activatedRouteSnapshot,routerState));
   return resolveUserName(activatedRouteSnapshot, routerState) + '\'s Tasks';
+
+  
+  
 
   // alternative man kannn so bekommen dynamic Title
   // const userService = inject(UsersService);
