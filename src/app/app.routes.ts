@@ -33,6 +33,7 @@ export const routes: Routes = [
   },
   {
     path:'**',
-    component:NotFoundComponent
+    component:NotFoundComponent,
+    title:'Not Found Page'
   },
 ]
