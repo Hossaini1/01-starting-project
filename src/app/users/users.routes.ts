@@ -1,6 +1,6 @@
 import { Routes } from "@angular/router";
 import { resolveUserTasks, TasksComponent } from "../tasks/tasks.component";
-import { NewTaskComponent } from "../tasks/new-task/new-task.component";
+import { canLeaveEditePage, NewTaskComponent } from "../tasks/new-task/new-task.component";
 
 export const routes: Routes = [
   { path: '', redirectTo: 'tasks', pathMatch: 'full' },
@@ -11,5 +11,5 @@ export const routes: Routes = [
       userTasks:resolveUserTasks,
     }
     },
-  { path: 'tasks/new', component: NewTaskComponent }
+  { path: 'tasks/new', component: NewTaskComponent , canDeactivate:[canLeaveEditePage] }
 ]
