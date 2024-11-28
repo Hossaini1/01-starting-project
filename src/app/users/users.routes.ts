@@ -6,7 +6,7 @@ export const routes: Routes = [
   { path: '', redirectTo: 'tasks', pathMatch: 'full' },
   { path: 'tasks',
      component:TasksComponent,
-     runGuardsAndResolvers:'paramsOrQueryParamsChange',
+     runGuardsAndResolvers:'always',
     resolve:{
       userTasks:resolveUserTasks,
     }
